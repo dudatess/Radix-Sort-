@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 {
     std::vector<std::string> vetor;
     std::map<std::string, int> ocorrencias;
-    std::map<std::string, int> topOcorrencias;
+    std::vector<std::pair<std::string, int>> topOcorrencias;
     std::string linha;
     std::string passagem;
 
@@ -43,13 +43,14 @@ int main(int argc, char *argv[])
     else if (passagem.compare("1") == 0)
     {
         for (const auto& par : ocorrencias) {
-            std::cout << par.first << " - " << par.second << std::endl;
+            std::cout << par.first << " " << par.second << std::endl;
         }
     }
     else if (passagem.compare("2") == 0)
     {
         for (const auto& par : topOcorrencias) {
-            std::cout << par.first << " - " << par.second << std::endl;
+            
+            std::cout << par.first << " " << par.second << std::endl;
         }
     }
     else   

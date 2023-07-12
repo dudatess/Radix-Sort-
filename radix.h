@@ -21,7 +21,7 @@ private:
 
 
 public:
-    static std::map<std::string, int> top1000Occurrences(std::map<std::string, int>& ocorrencias) ;
+    static std::vector<std::pair<std::string, int>> top1000Occurrences(std::map<std::string, int>& ocorrencias);
     static std::map<std::string, int> countOccurrences(std::vector<std::string>& vector);
     static void sort(std::vector<std::string>& vector); 
 

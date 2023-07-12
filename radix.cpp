@@ -78,7 +78,7 @@ std::map<std::string, int> MSD::countOccurrences(std::vector<std::string>& vecto
     return occurrences;
 }
 
-std::map<std::string, int> MSD::top1000Occurrences(std::map<std::string, int>& ocorrencias) 
+std::vector<std::pair<std::string, int>> MSD::top1000Occurrences(std::map<std::string, int>& ocorrencias)
 {
     std::vector<std::pair<std::string, int>> ocorrenciasVec;
 
@@ -87,19 +87,19 @@ std::map<std::string, int> MSD::top1000Occurrences(std::map<std::string, int>& o
     }
 
     std::sort(ocorrenciasVec.begin(), ocorrenciasVec.end(), [](const auto& a, const auto& b) {
-        return a.second > b.second;
+            
+        if (a.second != b.second) {
+
+            return a.second > b.second; 
+        } 
+        else {
+            return a.first < b.first; 
+        }
     });
 
-    std::map<std::string, int> topOccurrences;
-
-    int count = 0;
-    for (const auto& pair : ocorrenciasVec) {
-        topOccurrences[pair.first] = pair.second;
-        count++;
-        if (count >= 1000) {
-            break;
-        }
+    if (ocorrenciasVec.size() > 1000) {
+        ocorrenciasVec.resize(1000);
     }
 
-    return topOccurrences;
+    return ocorrenciasVec;
 }
